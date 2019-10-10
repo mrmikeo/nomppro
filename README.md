@@ -1,9 +1,4 @@
-## This repo is looking for maintainers! Please reach out if interested.
 
---------
-
-
-# NOMP ![NOMP Logo](http://zone117x.github.io/node-open-mining-portal/logo.svg "NOMP Logo")
 #### Node Open Mining Portal
 
 This portal is an extremely efficient, highly scalable, all-in-one, easy to setup cryptocurrency mining pool written
@@ -16,8 +11,6 @@ This is beta software. All of the following are things that can change and break
 #### Paid Solution
 Usage of this software requires abilities with sysadmin, database admin, coin daemons, and sometimes a bit of programming. Running a production pool can literally be more work than a full-time job. 
 
-
-**Coin switching & auto-exchanging for payouts in BTC/LTC** to miners is a feature that very likely will not be included in this project. 
 
 
 #### Table of Contents
