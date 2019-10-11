@@ -134,6 +134,36 @@ module.exports = function(logger){
                 if (poolOptions.validateWorkerUsername !== true)
                     authCallback(true);
                 else {
+                    
+					if (workerName.indexOf('.') > 0)
+					{
+						var userdetails = workerName.split('.');
+						var user = userdetails[0].substr(0,30);
+						var worker = userdetails[1].substr(0,30);
+					}
+					else
+					{
+						var user = workerName.substr(0,30);
+						var worker = '';
+					}
+
+                    redisClient.hget('validUsers', user, function(error, isValid) {
+                        if (error) {
+                            authCallback(false);
+                        }
+                        else {
+                            if (isValid == 1)
+                            {
+                                authCallback(true);
+                            }
+                            else
+                            {
+                                authCallback(false);
+                            }
+                        }
+                    });
+                    
+                    /*
                     if (workerName.length === 40) {
                         try {
                             new Buffer(workerName, 'hex');
@@ -151,6 +181,7 @@ module.exports = function(logger){
                             authCallback(isValid);
                         });
                     }
+                    */
 
                 }
             };
