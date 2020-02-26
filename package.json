@@ -31,20 +31,20 @@
         "url": "https://github.com/mrmikeo/nomppro.git"
     },
     "dependencies": {
-        "async": "1.5.2",
-        "bignum": "^0.13.0",
+        "async": "3.2.0",
+        "bignum": "^0.13.1",
         "body-parser": "*",
         "colors": "*",
         "compression": "*",
-        "dateformat": "1.0.12",
+        "dateformat": "3.0.3",
         "express": "*",
         "extend": "*",
         "mysql": "*",
         "node-json-minify": "*",
-        "node-watch": "0.5.9",
+        "node-watch": "0.6.3",
         "nonce": "*",
-        "redis": "0.12.1",
-        "request": "^2.88.0",
+        "redis": "3.0.2",
+        "request": "^2.88.2",
         "stratum-pool": "git://github.com/mrmikeo/node-stratum-pool.git"
     },
     "engines": {

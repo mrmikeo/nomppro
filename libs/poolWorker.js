@@ -200,41 +200,10 @@ module.exports = function(logger){
             logger[severity](logSystem, logComponent, logSubCat, text);
         }).on('banIP', function(ip, worker){
             process.send({type: 'banIP', ip: ip});
-        }).on('started', function(){
-            _this.setDifficultyForProxyPort(pool, poolOptions.coin.name, poolOptions.coin.algorithm);
         });
 
         pool.start();
         pools[poolOptions.coin.name] = pool;
     });
 
-    //
-    // Called when stratum pool emits its 'started' event to copy the initial diff and vardiff 
-    // configuation for any proxy switching ports configured into the stratum pool object.
-    //
-    this.setDifficultyForProxyPort = function(pool, coin, algo) {
-
-        logger.debug(logSystem, logComponent, algo, 'Setting proxy difficulties after pool start');
-
-        Object.keys(portalConfig.switching).forEach(function(switchName) {
-            if (!portalConfig.switching[switchName].enabled) return;
-
-            var switchAlgo = portalConfig.switching[switchName].algorithm;
-            if (pool.options.coin.algorithm !== switchAlgo) return;
-
-            // we know the switch configuration matches the pool's algo, so setup the diff and 
-            // vardiff for each of the switch's ports
-            for (var port in portalConfig.switching[switchName].ports) {
-
-                if (portalConfig.switching[switchName].ports[port].varDiff)
-                    pool.setVarDiff(port, portalConfig.switching[switchName].ports[port].varDiff);
-
-                if (portalConfig.switching[switchName].ports[port].diff){
-                    if (!pool.options.ports.hasOwnProperty(port)) 
-                        pool.options.ports[port] = {};
-                    pool.options.ports[port].diff = portalConfig.switching[switchName].ports[port].diff;
-                }
-            }
-        });
-    };
 };
