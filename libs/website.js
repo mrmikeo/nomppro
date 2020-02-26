@@ -236,16 +236,18 @@ module.exports = function(logger){
 
     app.use(bodyParser.json());
 
-    /*
+   
     app.get('/get_page', function(req, res, next){
+        /*
         var requestedPage = getPage(req.query.id);
         if (requestedPage){
             res.end(requestedPage);
             return;
         }
+        */
         next();
     });
-
+ /*
     app.get('/key.html', function(req, res, next){
         res.end(keyScriptProcessed);
     });
@@ -256,9 +258,6 @@ module.exports = function(logger){
 
     
     app.get('/api/:method', function(req, res, next){
-        
-console.log(req);
-console.log(res);
         portalApi.handleApiRequest(req, res, next);
     });
 
