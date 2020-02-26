@@ -1,6 +1,9 @@
-#### Initial Goals
+#### Nomp Pro
 
-- Upgrade software and dependencies to Node V10.x
+- This is a simplified version of NOMP 
+- No website, only API
+- No profit switching
+- Remove any unnessary code
 
 
 #### Node Open Mining Portal
