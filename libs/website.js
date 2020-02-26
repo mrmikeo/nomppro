@@ -104,14 +104,15 @@ module.exports = function(logger){
             logger.debug(logSystem, 'Server', 'Reloaded file ' + basename);
         }
     });
-
+*/
+    
     portalStats.getGlobalStats(function(){
         readPageFiles(Object.keys(pageFiles));
     });
 
     var buildUpdatedWebsite = function(){
         portalStats.getGlobalStats(function(){
-            processTemplates();
+            //processTemplates();
 
             var statData = 'data: ' + JSON.stringify(portalStats.stats) + '\n\n';
             for (var uid in portalApi.liveStatConnections){
@@ -124,7 +125,7 @@ module.exports = function(logger){
 
     setInterval(buildUpdatedWebsite, websiteConfig.stats.updateInterval * 1000);
 
-
+/*
     var buildKeyScriptPage = function(){
         async.waterfall([
             function(callback){
