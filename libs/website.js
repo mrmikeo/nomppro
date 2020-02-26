@@ -4,7 +4,7 @@ var path = require('path');
 
 //var async = require('async');
 //var watch = require('node-watch');
-var redis = require('redis');
+//var redis = require('redis');
 
 //var dot = require('dot');
 var express = require('express');
@@ -104,10 +104,10 @@ module.exports = function(logger){
             logger.debug(logSystem, 'Server', 'Reloaded file ' + basename);
         }
     });
-
+*/
     
     portalStats.getGlobalStats(function(){
-        readPageFiles(Object.keys(pageFiles));
+        //readPageFiles(Object.keys(pageFiles));
     });
 
     var buildUpdatedWebsite = function(){
@@ -124,7 +124,7 @@ module.exports = function(logger){
     };
 
     setInterval(buildUpdatedWebsite, websiteConfig.stats.updateInterval * 1000);
-
+/*
 
     var buildKeyScriptPage = function(){
         async.waterfall([
