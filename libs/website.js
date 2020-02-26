@@ -104,12 +104,12 @@ module.exports = function(logger){
             logger.debug(logSystem, 'Server', 'Reloaded file ' + basename);
         }
     });
-*/
+
     
     portalStats.getGlobalStats(function(){
         readPageFiles(Object.keys(pageFiles));
     });
-
+*/
     var buildUpdatedWebsite = function(){
         portalStats.getGlobalStats(function(){
             //processTemplates();
