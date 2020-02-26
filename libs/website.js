@@ -29,7 +29,7 @@ module.exports = function(logger){
     var portalApi = new api(logger, portalConfig, poolConfigs);
     var portalStats = portalApi.stats;
 
-    //var logSystem = 'Website';
+    var logSystem = 'API';
 
 /*
     var pageFiles = {
