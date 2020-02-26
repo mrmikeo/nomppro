@@ -37,7 +37,6 @@
         "colors": "*",
         "compression": "*",
         "dateformat": "1.0.12",
-        "dot": "*",
         "express": "*",
         "extend": "*",
         "mysql": "*",
