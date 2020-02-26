@@ -2,36 +2,36 @@
 var fs = require('fs');
 var path = require('path');
 
-var async = require('async');
-var watch = require('node-watch');
-var redis = require('redis');
+//var async = require('async');
+//var watch = require('node-watch');
+//var redis = require('redis');
 
-var dot = require('dot');
+//var dot = require('dot');
 var express = require('express');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 
-var Stratum = require('stratum-pool');
-var util = require('stratum-pool/lib/util.js');
+//var Stratum = require('stratum-pool');
+//var util = require('stratum-pool/lib/util.js');
 
 var api = require('./api.js');
 
 
 module.exports = function(logger){
 
-    dot.templateSettings.strip = false;
+    //dot.templateSettings.strip = false;
 
     var portalConfig = JSON.parse(process.env.portalConfig);
     var poolConfigs = JSON.parse(process.env.pools);
 
-    var websiteConfig = portalConfig.website;
+    //var websiteConfig = portalConfig.website;
 
     var portalApi = new api(logger, portalConfig, poolConfigs);
     var portalStats = portalApi.stats;
 
-    var logSystem = 'Website';
+    //var logSystem = 'Website';
 
-
+/*
     var pageFiles = {
         'index.html': 'index',
         'home.html': '',
@@ -43,7 +43,8 @@ module.exports = function(logger){
         'admin.html': 'admin',
         'mining_key.html': 'mining_key'
     };
-
+*/
+/*
     var pageTemplates = {};
 
     var pageProcessed = {};
@@ -73,9 +74,9 @@ module.exports = function(logger){
 
         //logger.debug(logSystem, 'Stats', 'Website updated to latest stats');
     };
+*/
 
-
-
+/*
     var readPageFiles = function(files){
         async.each(files, function(fileName, callback){
             var filePath = 'website/' + (fileName === 'index.html' ? '' : 'pages/') + fileName;
@@ -92,8 +93,8 @@ module.exports = function(logger){
             processTemplates();
         });
     };
-
-
+*/
+/*
     //If an html file was changed reload it
     watch('website', function(filename){
         var basename = path.basename(filename);
@@ -225,7 +226,7 @@ module.exports = function(logger){
             next();
 
     };
-
+*/
 
 
     var app = express();
@@ -233,6 +234,7 @@ module.exports = function(logger){
 
     app.use(bodyParser.json());
 
+    /*
     app.get('/get_page', function(req, res, next){
         var requestedPage = getPage(req.query.id);
         if (requestedPage){
@@ -248,7 +250,8 @@ module.exports = function(logger){
 
     app.get('/:page', route);
     app.get('/', route);
-
+    */
+    
     app.get('/api/:method', function(req, res, next){
         portalApi.handleApiRequest(req, res, next);
     });
@@ -269,7 +272,7 @@ module.exports = function(logger){
     });
 
     app.use(compress());
-    app.use('/static', express.static('website/static'));
+    //app.use('/static', express.static('website/static'));
 
     app.use(function(err, req, res, next){
         console.error(err.stack);
@@ -278,11 +281,11 @@ module.exports = function(logger){
 
     try {
         app.listen(portalConfig.website.port, portalConfig.website.host, function () {
-            logger.debug(logSystem, 'Server', 'Website started on ' + portalConfig.website.host + ':' + portalConfig.website.port);
+            logger.debug(logSystem, 'Server', 'Api started on ' + portalConfig.website.host + ':' + portalConfig.website.port);
         });
     }
     catch(e){
-        logger.error(logSystem, 'Server', 'Could not start website on ' + portalConfig.website.host + ':' + portalConfig.website.port
+        logger.error(logSystem, 'Server', 'Could not start api on ' + portalConfig.website.host + ':' + portalConfig.website.port
             +  ' - its either in use or you do not have permission');
     }
 
