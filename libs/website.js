@@ -1,10 +1,6 @@
 
-var fs = require('fs');
-var path = require('path');
-
 var express = require('express');
 var compress = require('compression');
-
 var api = require('./api.js');
 
 module.exports = function(logger){
@@ -38,12 +34,6 @@ module.exports = function(logger){
     setInterval(buildUpdatedWebsite, websiteConfig.stats.updateInterval * 1000);
 
     var app = express();
-   
-    /*
-    app.get('/get_page', function(req, res, next){
-        next();
-    });
-    */
     
     app.get('/api/:method', function(req, res, next){
         portalApi.handleApiRequest(req, res, next);
@@ -65,6 +55,5 @@ module.exports = function(logger){
         logger.error(logSystem, 'Server', 'Could not start api on ' + portalConfig.website.host + ':' + portalConfig.website.port
             +  ' - its either in use or you do not have permission');
     }
-
 
 };
