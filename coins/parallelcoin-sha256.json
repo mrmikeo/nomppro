@@ -1,0 +1,6 @@
+{
+    "name": "Parallelcoin-Sha256",
+    "symbol": "DUO",
+    "algorithm": "sha256",
+    "hasGetInfo": true
+}

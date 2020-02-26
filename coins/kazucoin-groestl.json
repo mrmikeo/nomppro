@@ -1,0 +1,6 @@
+{
+    "name": "kazucoin-groestl",
+    "symbol": "kazu",
+    "algorithm": "groestl",
+    "normalHashing": true
+}

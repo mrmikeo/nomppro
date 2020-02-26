@@ -1,0 +1,6 @@
+{
+    "name": "Parallelcoin-Scrypt",
+    "symbol": "DUO",
+    "algorithm": "scrypt",
+    "hasGetInfo": true
+}

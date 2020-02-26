@@ -1,0 +1,5 @@
+{
+    "name": "kazucoin-scrypt",
+    "symbol": "kazu",
+    "algorithm": "scrypt"
+}
