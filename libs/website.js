@@ -109,7 +109,7 @@ module.exports = function(logger){
     portalStats.getGlobalStats(function(){
         readPageFiles(Object.keys(pageFiles));
     });
-*/
+
     var buildUpdatedWebsite = function(){
         portalStats.getGlobalStats(function(){
             //processTemplates();
@@ -125,7 +125,7 @@ module.exports = function(logger){
 
     setInterval(buildUpdatedWebsite, websiteConfig.stats.updateInterval * 1000);
 
-/*
+
     var buildKeyScriptPage = function(){
         async.waterfall([
             function(callback){
@@ -217,7 +217,7 @@ module.exports = function(logger){
         }
     };
 
-*/
+
     var route = function(req, res, next){
         var pageId = req.params.page || '';
         if (pageId in indexesProcessed){
@@ -229,7 +229,7 @@ module.exports = function(logger){
 
     };
 
-
+*/
 
     var app = express();
 
@@ -251,14 +251,18 @@ module.exports = function(logger){
     });
     */
     
-    app.get('/:page', route);
-    app.get('/', route);
+    //app.get('/:page', route);
+    //app.get('/', route);
 
     
     app.get('/api/:method', function(req, res, next){
+        
+console.log(req);
+console.log(res);
         portalApi.handleApiRequest(req, res, next);
     });
 
+    /*
     app.post('/api/admin/:method', function(req, res, next){
         if (portalConfig.website
             && portalConfig.website.adminCenter
@@ -273,7 +277,8 @@ module.exports = function(logger){
             next();
 
     });
-
+    */
+    
     app.use(compress());
     //app.use('/static', express.static('website/static'));
 
