@@ -9,7 +9,6 @@ var extend = require('extend');
 var PoolLogger = require('./libs/logUtil.js');
 var CliListener = require('./libs/cliListener.js');
 var PoolWorker = require('./libs/poolWorker.js');
-var PaymentProcessor = require('./libs/paymentProcessor.js');
 var Website = require('./libs/website.js');
 
 var algos = require('stratum-pool/lib/algoProperties.js');
@@ -71,9 +70,6 @@ if (cluster.isWorker){
     switch(process.env.workerType){
         case 'pool':
             new PoolWorker(logger);
-            break;
-        case 'paymentProcessor':
-            new PaymentProcessor(logger);
             break;
         case 'website':
             new Website(logger);
@@ -353,35 +349,6 @@ var processCoinSwitchCommand = function(params, options, reply){
 };
 
 
-
-var startPaymentProcessor = function(){
-
-    var enabledForAny = false;
-    for (var pool in poolConfigs){
-        var p = poolConfigs[pool];
-        var enabled = p.enabled && p.paymentProcessing && p.paymentProcessing.enabled;
-        if (enabled){
-            enabledForAny = true;
-            break;
-        }
-    }
-
-    if (!enabledForAny)
-        return;
-
-    var worker = cluster.fork({
-        workerType: 'paymentProcessor',
-        pools: JSON.stringify(poolConfigs)
-    });
-    worker.on('exit', function(code, signal){
-        logger.error('Master', 'Payment Processor', 'Payment processor died, spawning replacement...');
-        setTimeout(function(){
-            startPaymentProcessor(poolConfigs);
-        }, 2000);
-    });
-};
-
-
 var startWebsite = function(){
 
     if (!portalConfig.website.enabled) return;
@@ -407,8 +374,6 @@ var startWebsite = function(){
     poolConfigs = buildPoolConfigs();
 
     spawnPoolWorkers();
-
-    startPaymentProcessor();
 
     startWebsite();
 
