@@ -16,8 +16,6 @@ module.exports = function(logger, portalConfig, poolConfigs){
         switch(req.params.method){
             case 'stats':
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-  console.log('stats');
-  console.log(portalStats.statsString);
                 res.end(portalStats.statsString);
                 return;
             case 'pool_stats':
