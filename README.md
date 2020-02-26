@@ -321,16 +321,8 @@ Explanation for each field:
                 }
             }
         }
-    },
-
-    "profitSwitch": {
-        "enabled": false,
-        "updateInterval": 600,
-        "depth": 0.90,
-        "usePoloniex": true,
-        "useCryptsy": true,
-        "useMintpal": true
     }
+
 }
 ````
 
