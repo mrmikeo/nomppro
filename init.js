@@ -31,14 +31,6 @@ var logger = new PoolLogger({
 
 
 
-
-try {
-    require('newrelic');
-    if (cluster.isMaster)
-        logger.debug('NewRelic', 'Monitor', 'New Relic initiated');
-} catch(e) {}
-
-
 //Try to give process ability to handle 100k concurrent connections
 try{
     var posix = require('posix');
