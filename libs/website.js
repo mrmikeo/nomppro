@@ -217,6 +217,7 @@ module.exports = function(logger){
         }
     };
 
+*/
     var route = function(req, res, next){
         var pageId = req.params.page || '';
         if (pageId in indexesProcessed){
@@ -227,7 +228,7 @@ module.exports = function(logger){
             next();
 
     };
-*/
+
 
 
     var app = express();
@@ -248,10 +249,11 @@ module.exports = function(logger){
     app.get('/key.html', function(req, res, next){
         res.end(keyScriptProcessed);
     });
-
+    */
+    
     app.get('/:page', route);
     app.get('/', route);
-    */
+
     
     app.get('/api/:method', function(req, res, next){
         portalApi.handleApiRequest(req, res, next);
