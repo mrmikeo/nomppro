@@ -39,9 +39,11 @@ module.exports = function(logger){
 
     var app = express();
    
+    /*
     app.get('/get_page', function(req, res, next){
         next();
     });
+    */
     
     app.get('/api/:method', function(req, res, next){
         portalApi.handleApiRequest(req, res, next);
