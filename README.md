@@ -1,5 +1,7 @@
 #### Nomp Pro
 
+The main purpose of this version is for either running as a solo miner, or to integrate it into another project.  This project has no long term storage or web interface, only an API interface for statistics.
+
 - This is a simplified version of NOMP 
 - No website, only API
 - No profit switching
