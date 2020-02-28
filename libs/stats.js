@@ -58,6 +58,24 @@ module.exports = function(logger, portalConfig, poolConfigs){
         });
     }
 
+    this.getBlocks = function (cback) {
+        var allBlocks = {};
+        async.each(_this.stats.pools, function(pool, pcb) {
+
+            if (_this.stats.pools[pool.name].pending && _this.stats.pools[pool.name].pending.blocks)
+                for (var i=0; i<_this.stats.pools[pool.name].pending.blocks.length; i++)
+                    allBlocks[pool.name+"-"+_this.stats.pools[pool.name].pending.blocks[i].split(':')[2]] = _this.stats.pools[pool.name].pending.blocks[i];
+
+            if (_this.stats.pools[pool.name].confirmed && _this.stats.pools[pool.name].confirmed.blocks)
+                for (var i=0; i<_this.stats.pools[pool.name].confirmed.blocks.length; i++)
+                    allBlocks[pool.name+"-"+_this.stats.pools[pool.name].confirmed.blocks[i].split(':')[2]] = _this.stats.pools[pool.name].confirmed.blocks[i];
+
+            pcb();
+        }, function(err) {
+            cback(allBlocks);
+        });
+    };
+	
     function gatherStatHistory(){
 
         var retentionTime = (((Date.now() / 1000) - portalConfig.website.stats.historicalRetention) | 0).toString();
