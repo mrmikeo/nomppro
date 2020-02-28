@@ -22,13 +22,6 @@ module.exports = function(logger, portalConfig, poolConfigs){
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify(portalStats.statPoolHistory));
                 return;
-            case 'blocks':
-            case 'getblocksstats':
-                portalStats.getBlocks(function(data){
-                    res.header('Content-Type', 'application/json');
-                    res.end(JSON.stringify(data));                                        
-                });
-                break;
             case 'live_stats':
                 res.writeHead(200, {
                     'Content-Type': 'text/event-stream',
