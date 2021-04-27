@@ -38,7 +38,7 @@
         "node-json-minify": "*",
         "node-watch": "0.6.3",
         "nonce": "*",
-        "redis": "3.0.2",
+        "redis": "3.1.1",
         "request": "^2.88.2",
         "stratum-pool": "git://github.com/mrmikeo/node-stratum-pool.git"
     },
