@@ -28,7 +28,7 @@
         "url": "https://github.com/mrmikeo/nomppro.git"
     },
     "dependencies": {
-        "async": "3.2.0",
+        "async": "3.2.2",
         "bignum": "^0.13.1",
         "colors": "*",
         "compression": "*",
